@@ -14,22 +14,29 @@ public final class DiffHelper {
         char[] leftChars = left.toCharArray();
         char[] rightChars = right.toCharArray();
         Set<DiffOffset> offsets = new HashSet<>();
-        int offsetStatPosition = 0;
+        int offsetPosition = 0;
         int offsetLength = 0;
         for (int i = 0; i < leftChars.length; i++) {
             if (leftChars[i] != rightChars[i]) {
-                if (offsetStatPosition == 0) {
-                    offsetStatPosition = i + 1;
+                if (offsetLength == 0) {
+                    offsetPosition = i + 1;
                 }
                 offsetLength++;
                 continue;
             }
-            if (offsetStatPosition != 0) {
+            if (offsetLength != 0) {
                 offsets.add(DiffOffset.builder()
-                    .position(offsetStatPosition)
+                    .position(offsetPosition)
                     .length(offsetLength)
                     .build());
+                offsetLength = 0;
             }
+        }
+        if (offsetLength != 0) {
+            offsets.add(DiffOffset.builder()
+                .position(offsetPosition)
+                .length(offsetLength)
+                .build());
         }
         return offsets;
     }

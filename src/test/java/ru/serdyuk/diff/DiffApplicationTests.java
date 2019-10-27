@@ -8,6 +8,6 @@ class DiffApplicationTests {
 
 	@Test
 	void contextLoads() {
-	}
 
+	}
 }
