@@ -20,8 +20,8 @@ Another variant start app via docker:
 `
 4. After creation image check the image: `docker images`, there have to be image with name: `ru.serdyuk/diff-data:0.0.1-snapshot`
 5. Run the image: `docker run -p 9090:9090 ru.serdyuk/diff-data:0.0.1-snapshot`
-
 Swagger endpoint for localhost: http://localhost:9090/swagger-ui.html
+
 --- 
 
 ## Available methods
