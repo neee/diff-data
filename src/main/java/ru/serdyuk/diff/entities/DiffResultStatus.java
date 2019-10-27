@@ -1,7 +1,7 @@
 package ru.serdyuk.diff.entities;
 
 /**
- * Statuse,s which are possible to response
+ * Statuses, which are possible to response
  */
 public enum DiffResultStatus {
 

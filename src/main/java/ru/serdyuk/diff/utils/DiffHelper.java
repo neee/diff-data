@@ -5,6 +5,9 @@ import java.util.Set;
 
 import ru.serdyuk.diff.entities.DiffOffset;
 
+/**
+ * Support class for find diffs
+ */
 public final class DiffHelper {
 
     private DiffHelper() {

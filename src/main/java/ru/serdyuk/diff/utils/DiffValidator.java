@@ -6,6 +6,9 @@ import ru.serdyuk.diff.entities.Diff;
 import ru.serdyuk.diff.exceptions.DiffKeyNotFoundException;
 import ru.serdyuk.diff.exceptions.DiffValueIsNotPresentException;
 
+/**
+ * Support class for validate received values
+ */
 public class DiffValidator {
 
     /**
