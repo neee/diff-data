@@ -1,4 +1,4 @@
-# Application: find differences between two Base64 encoded strings
+# Application: find differences between two base64 encoded strings
 
 ## Setup
 
