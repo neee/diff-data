@@ -32,10 +32,12 @@ POST /v1/diff/{key}/right - put second value
 GET  /v1/deff/{key} - get result
 ```
 Keep in mind, is it not final version, and the storage (for values) persists values, good way to implement external
-storage with evictions policy. it might use mongodb or some distributed cache (like redis or hazelcast).
+storage with evictions policy. It might be mongodb or some distributed cache (like redis or hazelcast).
 
 ---
 
 For future releases:
-1. Cloud storage implementation
-2. docker-compose 
+1. cloud storage implementation
+2. docker-compose (with external storage)
+3. vegeta load test
+4. graal compiler
