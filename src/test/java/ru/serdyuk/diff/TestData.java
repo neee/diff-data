@@ -6,6 +6,13 @@ import ru.serdyuk.diff.entities.Diff;
 
 public final class TestData {
 
+    public final static String DIFF_CONTROLLER_PATH = "/v1/diff/";
+
+    public final static String ID_1 = "1";
+    public final static String UN_EXISTS_ID = "un_exists_id";
+    public final static String LEFT_PATH = "/left";
+    public final static String RIGHT_PATH = "/right";
+
     private TestData() {
     }
 

@@ -36,8 +36,8 @@ public class DiffServiceStandaloneImpl implements DiffService {
         if (storage.containsKey(id)) {
             putValueBuilder
                 .id(id)
-                .right(Optional.of(data))
-                .left(storage.get(id).getRight());
+                .left(storage.get(id).getLeft())
+                .right(Optional.of(data));
             storage.put(id, putValueBuilder.build());
         } else {
             putValueBuilder.id(id).right(Optional.of(data)).build();
