@@ -45,7 +45,7 @@ test {
 
 docker {
     springBootApplication {
-        baseImage = 'openjdk:14-jdk-alpine3.10'
+        baseImage = 'openjdk:11-jre-slim'
         maintainer = 'Sergey Serdyuk "itneee@gmail.com"'
         ports = [9090]
         jvmArgs = ['-Xms512m', '-Xmx1024m']
