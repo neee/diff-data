@@ -1,18 +1,16 @@
 package ru.serdyuk.diff.services;
 
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import reactor.core.publisher.Mono;
 import ru.serdyuk.diff.entities.Diff;
-import ru.serdyuk.diff.entities.DiffOffset;
 import ru.serdyuk.diff.entities.DiffResult;
 import ru.serdyuk.diff.entities.DiffResultStatus;
 import ru.serdyuk.diff.exceptions.DiffKeyNotFoundException;
-import ru.serdyuk.diff.exceptions.DiffValueIsNotPresentException;
+import ru.serdyuk.diff.utils.DiffHelper;
+import ru.serdyuk.diff.utils.DiffValidator;
 
 public class DiffServiceStandaloneImpl implements DiffService {
 
@@ -60,26 +58,7 @@ public class DiffServiceStandaloneImpl implements DiffService {
                 .status(DiffResultStatus.SIZE_IS_DIFFERENT)
                 .build());
         }
-        char[] leftChars = left.toCharArray();
-        char[] rightChars = right.toCharArray();
-        Set<DiffOffset> offsets = new HashSet<>();
-        int offsetStatPosition = 0;
-        int offsetLength = 0;
-        for (int i = 0; i < leftChars.length; i++) {
-            if (leftChars[i] != rightChars[i]) {
-                if (offsetStatPosition == 0) {
-                    offsetStatPosition = i + 1;
-                }
-                offsetLength++;
-                continue;
-            }
-            if (offsetStatPosition != 0) {
-                offsets.add(DiffOffset.builder()
-                    .position(offsetStatPosition)
-                    .length(offsetLength)
-                    .build());
-            }
-        }
+        var offsets = DiffHelper.getOffsets(left, right);
         if (offsets.isEmpty()) {
             return Mono.just(DiffResult.builder()
                 .status(DiffResultStatus.EQUAL)
@@ -95,12 +74,6 @@ public class DiffServiceStandaloneImpl implements DiffService {
         if (!storage.containsKey(id)) {
             throw new DiffKeyNotFoundException(String.format("Key with id %s, doesn't exists", id));
         }
-        Diff foundValue = storage.get(id);
-        if (foundValue.getLeft().isEmpty()) {
-            throw new DiffValueIsNotPresentException(String.format("Left value for key %s is not present", id));
-        }
-        if (foundValue.getRight().isEmpty()) {
-            throw new DiffValueIsNotPresentException(String.format("Right value for key %s is not present", id));
-        }
+        DiffValidator.validateValues(storage.get(id));
     }
 }
