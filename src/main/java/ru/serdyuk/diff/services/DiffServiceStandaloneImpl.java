@@ -8,7 +8,6 @@ import reactor.core.publisher.Mono;
 import ru.serdyuk.diff.entities.Diff;
 import ru.serdyuk.diff.entities.DiffResult;
 import ru.serdyuk.diff.entities.DiffResultStatus;
-import ru.serdyuk.diff.exceptions.DiffKeyNotFoundException;
 import ru.serdyuk.diff.utils.DiffHelper;
 import ru.serdyuk.diff.utils.DiffValidator;
 
@@ -49,8 +48,9 @@ public class DiffServiceStandaloneImpl implements DiffService {
 
     @Override
     public Mono<DiffResult> getResult(String id) {
-        validateValues(id);
-        Diff diff = storage.get(id);
+        var foundDiff = Optional.ofNullable(storage.get(id));
+        DiffValidator.validateValues(foundDiff, id);
+        Diff diff = foundDiff.get();
         String left = diff.getLeft().get();
         String right = diff.getRight().get();
         if (left.length() != right.length()) {
@@ -68,12 +68,5 @@ public class DiffServiceStandaloneImpl implements DiffService {
             .status(DiffResultStatus.FOUND_DIFFERENSES)
             .offsets(offsets)
             .build());
-    }
-
-    private void validateValues(String id) {
-        if (!storage.containsKey(id)) {
-            throw new DiffKeyNotFoundException(String.format("Key with id %s, doesn't exists", id));
-        }
-        DiffValidator.validateValues(storage.get(id));
     }
 }
