@@ -38,7 +38,7 @@ storage with evictions policy. It might be mongodb or some distributed cache (li
 
 For future releases:
 1. cloud storage implementation
-2. integraion tests
+2. integration tests
 3. docker-compose (with external storage)
 4. vegeta load test
 5. graal compiler
