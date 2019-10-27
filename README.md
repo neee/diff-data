@@ -35,3 +35,7 @@ Keep in mind, is it not final version, and the storage (for values) persists val
 storage with evictions policy. it might use mongodb or some distributed cache (like redis or hazelcast).
 
 ---
+
+For future releases:
+1. Cloud storage implementation
+2. docker-compose 

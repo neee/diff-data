@@ -12,7 +12,8 @@ import ru.serdyuk.diff.utils.DiffHelper;
 import ru.serdyuk.diff.utils.DiffValidator;
 
 /**
- * Local implementation with in-memory storage like Map, recommended for using only for test, non production
+ * Local implementation with in-memory storage like Map, recommended for using only for test,
+ * non production and non cloud using
  */
 public class DiffServiceStandaloneImpl implements DiffService {
 
