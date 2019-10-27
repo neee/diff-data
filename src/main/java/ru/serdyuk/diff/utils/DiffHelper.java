@@ -10,6 +10,12 @@ public final class DiffHelper {
     private DiffHelper() {
     }
 
+    /**
+     * Method find differences between two base64 encoded strings
+     * @param left
+     * @param right
+     * @return
+     */
     public static Set<DiffOffset> getOffsets(String left, String right) {
         char[] leftChars = left.toCharArray();
         char[] rightChars = right.toCharArray();

@@ -7,6 +7,12 @@ import lombok.Value;
 
 @Value
 @Builder
+/**
+ * Main pojo class for the {@link ru.serdyuk.diff.controllers.DiffControllerV1}
+ * id - unique string
+ * left - first value
+ * right - second value
+ */
 public class Diff {
 
     String id;

@@ -11,6 +11,9 @@ import ru.serdyuk.diff.entities.DiffResultStatus;
 import ru.serdyuk.diff.utils.DiffHelper;
 import ru.serdyuk.diff.utils.DiffValidator;
 
+/**
+ * Local implementation with in-memory storage like Map, recommended for using only for test, non production
+ */
 public class DiffServiceStandaloneImpl implements DiffService {
 
     private final Map<String, Diff> storage = new ConcurrentHashMap<>();

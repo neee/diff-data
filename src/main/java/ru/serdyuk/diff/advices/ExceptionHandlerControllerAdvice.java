@@ -13,6 +13,9 @@ import ru.serdyuk.diff.entities.DiffResultStatus;
 import ru.serdyuk.diff.exceptions.DiffKeyNotFoundException;
 import ru.serdyuk.diff.exceptions.DiffValueIsNotPresentException;
 
+/**
+ * Create readable response for external api (contract)
+ */
 @ControllerAdvice
 public class ExceptionHandlerControllerAdvice extends ResponseEntityExceptionHandler {
 

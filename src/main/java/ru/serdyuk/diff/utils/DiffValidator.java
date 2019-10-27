@@ -8,6 +8,11 @@ import ru.serdyuk.diff.exceptions.DiffValueIsNotPresentException;
 
 public class DiffValidator {
 
+    /**
+     * Check values before calculate differences
+     * @param value
+     * @param id
+     */
     public static void validateValues(Optional<Diff> value, String id) {
         if (value.isEmpty()) {
             throw new DiffKeyNotFoundException(String.format("Key with id %s, doesn't exists", id));
